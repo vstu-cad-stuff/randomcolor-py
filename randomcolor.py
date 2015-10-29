@@ -53,6 +53,7 @@ class RandomColor(object):
 
     def pick_hue(self, hue):
         hue_range = self.get_hue_range(hue)
+
         hue = self.random_within(hue_range)
 
         # Instead of storing red as two seperate ranges,
@@ -91,12 +92,12 @@ class RandomColor(object):
         if luminosity == 'dark':
             bMax = bMin + 20
         elif luminosity == 'light':
-            bMin = (bMax + bMin) / 2
+            bMin = (bMax + bMin) // 2
         elif luminosity == 'random':
             bMin = 0
             bMax = 100
 
-        return self.random_within([bMin, bMax])
+        return self.random_within([int(bMin), bMax])
 
     def set_format(self, hsv, format_):
         if 'hsv' in format_:
@@ -148,7 +149,7 @@ class RandomColor(object):
                     return color['hue_range']
 
         else:
-          return [0, 360]
+            return [0, 360]
 
     def get_saturation_range(self, hue):
         return self.get_color_info(hue)['saturation_range']
