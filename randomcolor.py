@@ -10,12 +10,16 @@ class RandomColor(object):
 
     def __init__(self, seed=None):
         # Load color dictionary and populate the color dictionary
-        self.colormap = json.load(open('lib/colormap.json'))
+        self.colormap = json.load(open('randomcolor/lib/colormap.json'))
 
         if seed:
             self.seed = seed
         else:
-            self.seed = random.randint(0, sys.maxint)
+            try:
+                max_size = sys.maxint
+            except:
+                max_size = sys.maxsize
+            self.seed = random.randint(0, max_size)
 
         self.random = random.Random(self.seed)
 
