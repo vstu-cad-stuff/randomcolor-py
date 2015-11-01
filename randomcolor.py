@@ -3,14 +3,15 @@
 import colorsys
 import random
 import json
-import sys
+import os
 
 
 class RandomColor(object):
 
     def __init__(self, seed=None):
+        module_path = os.path.dirname(__file__)
         # Load color dictionary and populate the color dictionary
-        self.colormap = json.load(open('randomcolor/lib/colormap.json'))
+        self.colormap = json.load(open(module_path + '/lib/colormap.json'))
 
         if seed:
             self.seed = seed
