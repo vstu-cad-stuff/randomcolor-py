@@ -138,7 +138,7 @@ class RandomColor(object):
         return 0
 
     def get_hue_range(self, color_input):
-        if color_input and color_input.isdigit():
+        if color_input and str(color_input).isdigit():
             number = int(color_input)
 
             if number < 360 and number > 0:
